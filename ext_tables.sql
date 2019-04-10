@@ -325,19 +325,19 @@ CREATE TABLE tx_events2_domain_model_holiday (
 #
 CREATE TABLE tx_events2_domain_model_time (
   event int(11) unsigned DEFAULT '0' NOT NULL,
-  exception int(11) unsigned DEFAULT '0' NOT NULL,
+  exception int(11) unsigned DEFAULT '0' NOT NULL
 );
 
 #
 # Table structure for table 'tx_events2_domain_model_exception'
 #
 CREATE TABLE tx_events2_domain_model_exception (
-  event int(11) unsigned DEFAULT '0' NOT NULL,
+  event int(11) unsigned DEFAULT '0' NOT NULL
 );
 
 #
 # Table structure for table 'fe_users'
 #
 CREATE TABLE fe_users (
-  tx_events2_organizer int(11) unsigned DEFAULT '0' NOT NULL,
+  tx_events2_organizer int(11) unsigned DEFAULT '0' NOT NULL
 );
