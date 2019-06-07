@@ -15,7 +15,9 @@ namespace JWeiland\Events2\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 use JWeiland\Events2\Domain\Model\Filter;
+use JWeiland\Events2\PageTitle\Events2PageTitleProvider;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * The DayController contains actions for various list actions and detail view.
@@ -109,6 +111,16 @@ class DayController extends AbstractController
                 'tt_content column pages can not be 0',
                 FlashMessage::WARNING
             );
+        }
+        $event = $day->getEvent();
+        if ($event !== null) {
+            $content = sprintf(
+                '%s - %s',
+                trim($event->getTitle()),
+                $day->getDay()->format('d.m.Y')
+            );
+            $titleProvider = GeneralUtility::makeInstance(Events2PageTitleProvider::class);
+            $titleProvider->setTitle($content);
         }
 
         $this->view->assign('day', $day);

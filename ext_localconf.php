@@ -124,6 +124,17 @@ $boot = function ($extKey) {
     }
 
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['routing']['aspects']['TimestampMapper'] = \JWeiland\Events2\Routing\Aspect\TimestampMapper::class;
+
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptSetup(trim('
+    config.pageTitleProviders {
+        events2 {
+            provider = JWeiland\Events2\PageTitle\Events2PageTitleProvider
+            before = record
+            after = altPageTitle
+        }
+    }
+'));
+
 };
 $boot($_EXTKEY);
 unset($boot);
